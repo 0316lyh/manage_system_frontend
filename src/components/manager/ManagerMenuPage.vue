@@ -1,27 +1,22 @@
 <template>
+
   <el-row class="tac">
     <el-col :span="24">
       <el-menu
           class="el-menu-vertical-demo"
-
       >
-        <el-menu-item index="1"  @click="open('/index')">
+        <el-menu-item index="1"  @click="open('/manager')">
           <el-icon><UserFilled /></el-icon>
-          <span>个人信息</span>
+          <span>员工信息</span>
         </el-menu-item>
-        <el-menu-item index="2" @click="open('/index/change')">
+        <el-menu-item index="2" @click="open('/manager/message')">
           <el-icon><EditPen /></el-icon>
-          <span>修改信息</span>
+          <span>查看留言</span>
         </el-menu-item>
-        <el-menu-item index="3" @click="open('/index/news')">
+        <el-menu-item index="3" @click="open('/manager/news')">
           <el-icon><Tickets /></el-icon>
           <span>公告</span>
         </el-menu-item>
-        <el-menu-item index="4" @click="open('/index/message')">
-          <el-icon><Message /></el-icon>
-          <span>留言</span>
-        </el-menu-item>
-
       </el-menu>
     </el-col>
   </el-row>

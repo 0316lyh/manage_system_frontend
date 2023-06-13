@@ -4,38 +4,26 @@
     <div>
       <el-container>
         <el-header>
-          <router-view name="header1"/>
+          <router-view name="header2"/>
         </el-header>
         <el-container>
           <el-aside width="200px">
-            <router-view name="menu1"/>
+            <router-view name="menu2"/>
           </el-aside>
           <el-main>
-            <router-view name="myInfo"/>
-            <router-view name="change"/>
-            <router-view name="news1"/>
-            <router-view name="newsDetails"/>
-            <router-view name="message1"/>
+            <router-view name="usersInfo"/>
+            <router-view name="message2"/>
+            <router-view name="news2"/>
           </el-main>
         </el-container>
       </el-container>
     </div>
   </div>
-
 </template>
 
 <script>
-import router from "../router";
-
 export default {
-  name: "IndexView",
-  data() {
-
-  },
-  methods: {},
-  mounted() {
-
-  }
+  name: "ManagerIndexView",
 }
 </script>
 
@@ -84,4 +72,5 @@ body > .el-container {
 .el-container:nth-child(7) .el-aside {
   line-height: 320px;
 }
+
 </style>

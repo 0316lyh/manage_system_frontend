@@ -1,12 +1,13 @@
 <template>
-  <div style="height: 30px">
+  <hr>
+<!--  <div style="height: 30px">
   <span v-for="news in allNews">
     <el-row>
       <el-col :span="7">
         <div style="text-align: right">
-<!--            <div @click="open">
+&lt;!&ndash;            <div @click="open">
               {{news.name}}
-            </div>-->
+            </div>&ndash;&gt;
           <el-link type="info" @click="open(news.id)">{{ news.name }}</el-link>
         </div>
       </el-col>
@@ -16,19 +17,26 @@
       </el-col>
     </el-row>
   </span>
-  </div>
-  <hr>
+  </div>-->
 
-<!--  <el-table
-      :data="allNews"
-      style="width: 100%"
-      @click="f1"
-  >
-    <el-table-column prop="" label="" width="300" >11</el-table-column>
-    <el-table-column prop="name" label="" width="180" />
-    <el-table-column prop="" label="" width="500" />
-    <el-table-column prop="addDate" label="" />
-  </el-table>-->
+
+  <div style="height: 30px">
+  <span v-for="news in allNews">
+    <el-row>
+      <el-col :span="7">
+        <div style="text-align: right">
+          <router-link :to="'news/' + news.id">
+            {{news.name}}
+          </router-link>
+        </div>
+      </el-col>
+      <el-col :span="10"></el-col>
+      <el-col :span="7">
+        <div style="text-align: left">{{news.addDate}}</div>
+      </el-col>
+    </el-row>
+  </span>
+  </div>
 
 </template>
 
