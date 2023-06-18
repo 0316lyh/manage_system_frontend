@@ -83,7 +83,10 @@
       console.log("管理员登录...")
       axios.post('/managers', form).then((res) => {
         if (res.data.code == 20051) {
-          router.push('/manager');
+          ElMessage.success('管理员登陆成功')
+          setTimeout(() => {
+            router.push('/manager');
+          },1000)
         } else {
           ElMessage.error(res.data.msg);
           form.username="";

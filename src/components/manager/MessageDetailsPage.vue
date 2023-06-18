@@ -1,24 +1,26 @@
 <template>
-    <div style="text-align: center">
-      {{ content }}
-    </div>
+  {{content}}
 </template>
 
 <script>
 import axios from "axios";
 
 export default {
-  name: "NewsDetails",
+  name: "MessageDetailsPage",
   data() {
     return {
       id: this.$route.params.id,
       content: '',
     }
   },
-  methods: {},
+  methods:{
+
+  },
   mounted() {
-    axios.get("/news/" + this.id).then((res) => {
-      this.content = res.data.data.content;
+    axios.get('/messages/' + this.id).then((res) => {
+      if (res.data.code === 20041) {
+        this.content = res.data.data;
+      }
     })
   }
 }

@@ -90,6 +90,15 @@ const router = createRouter({
           }
         },
         {
+          path: 'news',
+          name: 'news2',
+          components: {
+            header2: () => import('/src/components/manager/ManagerHeaderPage.vue'),
+            menu2: ()  => import('/src/components/manager/ManagerMenuPage.vue'),
+            news2: () => import('/src/components/manager/ManagerNewsPage.vue'),
+          }
+        },
+        {
           path: 'message',
           name: 'message2',
           components: {
@@ -99,15 +108,20 @@ const router = createRouter({
           }
         },
         {
-          path: 'news',
-          name: 'news2',
+          path: 'message/:id',
+          name: 'messageDetails',
           components: {
             header2: () => import('/src/components/manager/ManagerHeaderPage.vue'),
             menu2: ()  => import('/src/components/manager/ManagerMenuPage.vue'),
-            news2: () => import('/src/components/manager/ManagerNewsPage.vue'),
+            messDetail: () => import('/src/components/manager/MessageDetailsPage.vue')
           }
         }
       ]
+    },
+    {
+      path: '/test',
+      name: 'test',
+      component: () => import('/src/components/test/testPage.vue')
     }
   ]
 

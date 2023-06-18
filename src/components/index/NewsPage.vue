@@ -1,5 +1,4 @@
 <template>
-  <hr>
 <!--  <div style="height: 30px">
   <span v-for="news in allNews">
     <el-row>

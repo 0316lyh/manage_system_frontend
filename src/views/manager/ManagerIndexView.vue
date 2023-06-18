@@ -14,6 +14,7 @@
             <router-view name="usersInfo"/>
             <router-view name="message2"/>
             <router-view name="news2"/>
+            <router-view name="messDetail"/>
           </el-main>
         </el-container>
       </el-container>

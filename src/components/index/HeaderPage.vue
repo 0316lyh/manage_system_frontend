@@ -24,7 +24,7 @@ export default {
     return {
       loginUserId: '',
       loginUsername: '',
-      src: ''
+      src: '',
     }
   },
   methods: {
@@ -38,7 +38,7 @@ export default {
   },
   mounted() {
     console.log("loginUserId === " + store.state.loginUserId);
-    axios.get('/infos/' + store.state.loginUserId).then((res) => {
+    axios.get("/infos/getByLoginUserId/" + store.state.loginUserId).then((res) => {
       if (res.data.code === 20041) {
         this.loginUserId = res.data.data.userId;
         this.loginUsername = res.data.data.name;

@@ -1,5 +1,4 @@
 <template>
-  <hr>
     <div>
       <div style="margin-top: 10px">
           <el-image style="height: 150px; width: 150px" :src="info.avatar"/>
@@ -33,7 +32,6 @@
         </el-row>
       </div>
     </div>
-  <hr>
 
 </template>
 
@@ -67,7 +65,7 @@ export default {
     }
   },
   mounted() {
-    axios.get("/infos/" + store.state.loginUserId).then((res) => {
+    axios.get("/infos/getByLoginUserId/" + store.state.loginUserId).then((res) => {
       console.log(res.data.data);
       this.info = res.data.data;
       store.commit('loginSuccess2', res.data.data.name);

@@ -1,10 +1,11 @@
 <template>
+
   <div>
-    <span style="margin-top: -20px">你好&nbsp;&nbsp;管理员</span>
-
-    <el-button style="margin-top: -10px" type="danger" @click="logout">登出</el-button>
+    <div style="margin-top: 15px">
+      你好&nbsp;&nbsp;管理员
+      <el-button style="margin-top: 0px" type="danger" @click="logout">登出</el-button>
+    </div>
   </div>
-
 
 </template>
 
