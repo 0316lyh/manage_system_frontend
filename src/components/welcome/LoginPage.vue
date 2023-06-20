@@ -55,7 +55,7 @@
   const form = reactive({
     username: '',
     password: '',
-    userType: 2    //1-用户  2-管理员
+    userType: 1    //1-用户  2-管理员
   })
 
 

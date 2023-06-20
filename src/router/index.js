@@ -71,6 +71,15 @@ const router = createRouter({
             menu1: () => import('/src/components/index/MenuPage.vue'),
             message1: () => import('/src/components/index/MessagePage.vue')
           }
+        },
+        {
+          path: 'changepassword',
+          name: 'changepassword',
+          components: {
+            header1: () => import('/src/components/index/HeaderPage.vue'),
+            menu1: () => import('/src/components/index/MenuPage.vue'),
+            changepassword: () => import('/src/components/index/ChangePasswordPage.vue')
+          }
         }
       ]
     },
@@ -118,11 +127,7 @@ const router = createRouter({
         }
       ]
     },
-    {
-      path: '/test',
-      name: 'test',
-      component: () => import('/src/components/test/testPage.vue')
-    }
+
   ]
 
 })

@@ -16,6 +16,7 @@
             <router-view name="news1"/>
             <router-view name="newsDetails"/>
             <router-view name="message1"/>
+            <router-view name="changepassword"/>
           </el-main>
         </el-container>
       </el-container>

@@ -1,5 +1,5 @@
 <template>
-<!--  信息展示-->
+<!--    信息展示-->
   <div style="text-align: center">
     <el-table :data="infos" style="width: 100%">
       <el-table-column label="头像" align="center">
@@ -28,8 +28,30 @@
     </el-table>
   </div>
 
+<!--  分页工具-->
+  <el-row>
+    <el-col :span="8"></el-col>
+    <el-col :span="8">
+      <div class="demo-pagination-block">
+        <el-pagination
+            v-model:current-page="currentPage"
+            v-model:page-size="pageSize"
+            :page-sizes="[5,10]"
+            :small="false"
+            :disabled="false"
+            :background="false"
+            layout="total, sizes, prev, pager, next, jumper"
+            :total="total"
+            @size-change="handleSizeChange"
+            @current-change="handleCurrentChange"
+        />
+      </div>
+    </el-col>
+    <el-col :span="8"></el-col>
+  </el-row>
 
-<!--  修改信息对话框-->
+
+  <!--  修改信息对话框-->
   <el-dialog
       v-model="dialogVisible"
       title="修改信息"
@@ -38,29 +60,29 @@
   >
     <el-form :model="changeFrom" label-width="120px" style="margin-top: 0px">
       <el-form-item label="Activity name">
-        <el-input v-model="changeFrom.name" />
+        <el-input v-model="changeFrom.name"/>
       </el-form-item>
       <el-form-item label="年龄">
-<!--        <el-input v-model="changeFrom.age" />-->
+        <!--        <el-input v-model="changeFrom.age" />-->
         <el-input-number v-model="changeFrom.age" :min="1" :max="100"/>
       </el-form-item>
       <el-form-item label="性别">
         <el-select v-model="changeFrom.sex" placeholder="性别">
-          <el-option label="男" value="男" />
-          <el-option label="女" value="女" />
+          <el-option label="男" value="男"/>
+          <el-option label="女" value="女"/>
         </el-select>
       </el-form-item>
       <el-form-item label="Email">
-        <el-input v-model="changeFrom.email" />
+        <el-input v-model="changeFrom.email"/>
       </el-form-item>
       <el-form-item label="地址">
-        <el-input v-model="changeFrom.address" />
+        <el-input v-model="changeFrom.address"/>
       </el-form-item>
       <el-form-item label="电话号码">
-        <el-input v-model="changeFrom.phoneNum" />
+        <el-input v-model="changeFrom.phoneNum"/>
       </el-form-item>
       <el-form-item label="部门">
-        <el-input v-model="changeFrom.dept" />
+        <el-input v-model="changeFrom.dept"/>
       </el-form-item>
 
       <el-form-item label="生日: ">
@@ -108,7 +130,12 @@ export default {
         avatar: '',
         dept: '',
         birthday: ''
-      }
+      },
+      // 当前页码
+      currentPage: 1,
+      // 每页显示条数
+      pageSize: 5,
+      total: 0
     }
   },
   methods: {
@@ -118,6 +145,11 @@ export default {
         console.log(res.data)
       })
     },
+
+    /*    getAll() {
+          console.log(123)
+        },*/
+
     change1(id) {
       console.log(id);
       this.dialogVisible = true;
@@ -132,11 +164,11 @@ export default {
         if (res.data.code == 20031) {
           ElMessage.success(res.data.msg);
           this.dialogVisible = false;
-          this.getAll();
+          this.getByPage();
         } else {
           ElMessage.error(res.data.msg);
           this.dialogVisible = false;
-          this.getAll();
+          this.getByPage();
         }
       })
     },
@@ -161,10 +193,10 @@ export default {
             axios.delete('/infos/' + id).then((res) => {
               if (res.data.code === 20021) {
                 ElMessage.success(res.data.msg);
-                this.getAll();
+                this.getByPage();
               } else {
                 ElMessage.error(res.data.msg);
-                this.getAll();
+                this.getByPage();
               }
             })
           })
@@ -173,10 +205,28 @@ export default {
             ElMessage.info('已删除取消')
           })
 
-    }
+    },
+    //分页相关
+    handleSizeChange(val) {
+      console.log(`每页 ${val} 条`);
+      this.getByPage();
+    },
+    handleCurrentChange(val) {
+      console.log("当前页: " + this.currentPage)
+      this.getByPage();
+    },
+    getByPage() {
+      axios.get("/infos/" + this.pageSize + "/" + this.currentPage).then((res) => {
+        this.total = res.data.data.total;
+        this.infos = res.data.data.list;
+      })
+    },
   },
   mounted() {
-    this.getAll();
+    axios.get("/infos/" + this.pageSize + "/" + this.currentPage).then((res) => {
+      this.total = res.data.data.total;
+      this.infos = res.data.data.list;
+    })
   }
 }
 </script>

@@ -21,6 +21,10 @@
           <el-icon><Message /></el-icon>
           <span>留言</span>
         </el-menu-item>
+        <el-menu-item index="5" @click="open('/index/changepassword')">
+          <el-icon><Lock /></el-icon>
+          <span>修改密码</span>
+        </el-menu-item>
 
       </el-menu>
     </el-col>
