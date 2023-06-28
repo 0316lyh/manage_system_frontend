@@ -4,6 +4,9 @@ html, body {
     height: 100%;
     width: 100%;
     font-size: 1rem;
+    /*取出滚动条*/
+    overflow-x: hidden;
+    overflow-y: hidden;
 }
 
 

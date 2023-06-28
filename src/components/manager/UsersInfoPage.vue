@@ -36,7 +36,7 @@
         <el-pagination
             v-model:current-page="currentPage"
             v-model:page-size="pageSize"
-            :page-sizes="[5,10]"
+            :page-sizes="[5,7]"
             :small="false"
             :disabled="false"
             :background="false"
@@ -236,5 +236,8 @@ export default {
 .dialog-footer button:first-child {
   margin-right: 10px;
 }
+
+
+html { overflow-x: hidden; overflow-y: auto; }
 
 </style>
